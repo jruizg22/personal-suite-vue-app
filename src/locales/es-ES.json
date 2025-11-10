@@ -1,0 +1,28 @@
+{
+  "welcome": "Bienvenido a Personal Suite",
+  "start": "Inicio",
+  "settings": "Configuración",
+  "language": "Idioma",
+  "actions": "Acciones",
+  "id": "ID",
+  "name": "Nombre",
+  "url": "Enlace",
+  "description": "Descripción",
+  "details": "Detalles",
+  "edit": "Editar",
+  "delete": "Eliminar",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "New": "Nuevo",
+  "close": "Cerrar",
+  "form_field_validations": {
+    "required": "Este campo es obligatorio",
+    "invalid_number": "Este campo solo debe contener números",
+    "invalid_url": "Este campo debe contener una URL válida"
+  },
+  "pagination": {
+    "rows_per_page": "Filas por página:",
+    "displayed_rows": "{{from}}-{{to}} de {{count}}",
+    "displayed_rows_more_than": "{{from}}-{{to}} de más de {{to}}"
+  }
+}

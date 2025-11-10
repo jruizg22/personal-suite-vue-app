@@ -1,0 +1,28 @@
+{
+  "welcome": "Welcome to Personal Suite",
+  "start": "Main",
+  "settings": "Settings",
+  "language": "Language",
+  "actions": "Actions",
+  "id": "ID",
+  "name": "Name",
+  "url": "URL",
+  "description": "Description",
+  "details": "Details",
+  "edit": "Edit",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "save": "Save",
+  "new": "New",
+  "close": "Close",
+  "form_field_validations": {
+    "required": "This field is required",
+    "invalid_number": "This field must only contain numbers",
+    "invalid_url": "This field must contain a valid URL"
+  },
+  "pagination": {
+    "rows_per_page": "Rows per page:",
+    "displayed_rows": "{{from}}-{{to}} of {{count}}",
+    "displayed_rows_more_than": "{{from}}-{{to}} of more than {{to}}"
+  }
+}
