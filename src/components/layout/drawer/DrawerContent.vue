@@ -1,27 +1,45 @@
 <script setup lang="ts">
 /**
- * Drawer content component containing the main list of navigation items.
+ * DrawerContent component for the application's navigation drawer.
  *
- * Uses `vue-i18n` to provide localized titles for the list items.
+ * This component renders the main list of navigation items using the routes
+ * provided by the `useDrawerRoutes` composable.
  *
- * Currently renders:
- * - A single navigation item: "Start" (`common.start`) with a home icon.
+ * Features:
+ * - Uses `DrawerItem` to render top-level routes.
+ * - Automatically handles routes with children, rendering collapsible submenus
+ *   via `DrawerItem` → `DrawerSubItem`.
+ * - Scrollable list that fills the vertical space of the drawer.
+ * - Route titles are automatically translated using `vue-i18n` and the
+ *   `meta.i18nKey` property from each route.
+ * - Icons are displayed using the `meta.icon` property for each route.
  *
- * This list is scrollable and takes all available vertical space in the drawer.
+ * Example usage:
+ * ```vue
+ * <v-navigation-drawer app>
+ *   <DrawerContent />
+ * </v-navigation-drawer>
+ * ```
+ *
+ * Notes:
+ * - Only routes with `meta.showInDrawer !== false` are included.
+ * - The drawer supports an arbitrary number of nested routes via `children`.
+ * - The last route, typically "Settings", can be rendered separately in a
+ *   footer if desired.
  */
 
-import {useI18n} from 'vue-i18n'
+import {useDrawerRoutes} from '@/composables';
+import {DrawerItem} from '@/components/layout';
 
-const {t} = useI18n()
+const {drawerRoutes} = useDrawerRoutes();
 </script>
 
 <template>
-  <v-list dense class="pa-0" style="flex: 1 1 auto; overflow-y: auto;">
-    <!-- Navigation item using i18n for the title -->
-    <v-list-item
-        :title="t('common.start')"
-        to="/"
-        prepend-icon="mdi-home"
+  <v-list density="comfortable" class="pa-0" style="flex: 1 1 auto; overflow-y: auto;">
+    <DrawerItem
+        v-for="route in drawerRoutes"
+        :key="route.path"
+        :route="route"
     />
   </v-list>
 </template>

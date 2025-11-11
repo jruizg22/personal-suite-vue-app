@@ -1,5 +1,5 @@
-import {createRouter, createWebHistory, type Router, type RouteRecordRaw} from 'vue-router'
-import {routes as baseRoutes} from '@/constants'
+import {createRouter, createWebHistory, type Router, type RouteRecordRaw} from 'vue-router';
+import {routes} from '@/constants';
 
 /**
  * Main Vue Router instance for the application.
@@ -30,10 +30,6 @@ import {routes as baseRoutes} from '@/constants'
  * @see {@link https://router.vuejs.org/guide/} Vue Router official guide
  * @see {@link RouteRecordRaw} for the route record type definition
  */
-
-const routes: RouteRecordRaw[] = [
-    ...baseRoutes
-]
 
 /**
  * The main application router.

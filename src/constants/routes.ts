@@ -1,5 +1,6 @@
-import type {RouteRecordRaw} from 'vue-router'
-import {HomeView, SettingsView} from '@/components/pages'
+import type {RouteRecordRaw} from 'vue-router';
+import {HomeView, SettingsView} from '@/components/pages';
+import {routes as mediaTrackerRoutes} from '@media-tracker/constants';
 
 /**
  * Base application routes configuration.
@@ -32,12 +33,19 @@ export const routes: RouteRecordRaw[] = [
         path: '/',
         name: 'home',
         component: HomeView,
-        meta: { breadcrumb: 'common.start' },
+        meta: {
+            i18nKey: 'common.start',
+            icon: 'mdi-home',
+        },
     },
     {
         path: '/settings',
         name: 'settings',
         component: SettingsView,
-        meta: { breadcrumb: 'common.settings' },
+        meta: {
+            i18nKey: 'common.settings',
+            icon: 'mdi-cog',
+        },
     },
+    ...mediaTrackerRoutes,
 ] as const;
