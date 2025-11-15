@@ -49,7 +49,7 @@ defineProps<{
 </script>
 
 <template>
-  <v-container class="ma-0 pa-0">
+  <v-container fluid class="ma-0 pa-0">
     <v-row
         v-for="el in items"
         :key="el.id"
