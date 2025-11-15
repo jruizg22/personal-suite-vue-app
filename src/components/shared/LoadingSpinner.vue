@@ -25,11 +25,12 @@
 </script>
 
 <template>
-  <v-container class="spinner-container" fluid>
+  <v-container fluid class="spinner-container ma-0 pa-0">
     <v-progress-circular
         color="primary"
+        :width="3"
+        :size="45"
         indeterminate
-        size="64"
     ></v-progress-circular>
   </v-container>
 </template>
@@ -40,6 +41,6 @@
   display: flex;            /* Enables flexbox layout */
   justify-content: center;  /* Horizontal centering */
   align-items: center;      /* Vertical centering */
-  height: 100vh;            /* Occupies the full viewport height */
+  height: 100%;            /* Occupies the full height */
 }
 </style>

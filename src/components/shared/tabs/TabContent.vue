@@ -58,11 +58,12 @@ watch(() => props.activeTab, (val) => {
 </script>
 
 <template>
-  <v-tabs-window v-model="localTab">
+  <v-tabs-window v-model="localTab" class="h-100">
     <v-tabs-window-item
         v-for="tab in tabs"
         :key="tab.tabId"
         :value="tab.tabId"
+        class="tab-scroll-area"
     >
       <component :is="tab.component" />
     </v-tabs-window-item>
@@ -70,5 +71,8 @@ watch(() => props.activeTab, (val) => {
 </template>
 
 <style scoped>
-
+.tab-scroll-area {
+  flex-grow: 1;
+  overflow-y: auto;
+}
 </style>
