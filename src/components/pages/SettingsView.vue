@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import {ref, watch} from 'vue'
 import {useI18n} from 'vue-i18n'
+import {useLocale} from 'vuetify'
 
-const {locale} = useI18n()
+const {t, locale} = useI18n({useScope: 'global'})
+const {current} = useLocale()
 
 const languages = [
-  { label: 'Español (España)', value: 'es_ES' },
-  { label: 'English (United States)', value: 'en_US' },
+  { label: 'Español (España)', value: 'es-ES' },
+  { label: 'English (United States)', value: 'en-US' },
 ]
 
 const selected = ref(locale.value)
 
 watch(selected, (newLocale) => {
   locale.value = newLocale
+  current.value = newLocale
   localStorage.setItem('app-locale', newLocale)
 })
 </script>

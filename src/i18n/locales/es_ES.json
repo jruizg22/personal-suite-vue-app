@@ -13,8 +13,15 @@
   "delete": "Eliminar",
   "cancel": "Cancelar",
   "save": "Guardar",
-  "New": "Nuevo",
+  "new": "Nuevo",
   "close": "Cerrar",
+  "search": "Buscar",
+  "select": "Seleccionar",
+  "sorting": {
+    "sort_by": "Ordenar por",
+    "sort_ascending": "Orden ascendente",
+    "sort_descending": "Orden descendente"
+  },
   "form_field_validations": {
     "required": "Este campo es obligatorio",
     "invalid_number": "Este campo solo debe contener números",

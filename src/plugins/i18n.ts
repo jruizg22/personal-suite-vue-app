@@ -1,14 +1,15 @@
 import {createI18n} from 'vue-i18n'
-import {messages} from "@/locales";
+import {datetimeFormats, messages} from '@/i18n'
 
 /**
  * Vue I18n instance for the application.
  *
  * This instance is configured with:
  * - `legacy: false` to enable Composition API (`useI18n`) usage.
- * - `locale`: the default locale of the app (`es_ES`).
- * - `fallbackLocale`: the locale used if a translation is missing (`en_US`).
- * - `messages`: the translation messages imported from `locales/index.ts`.
+ * - `locale`: the default locale of the app (`es-ES`).
+ * - `fallbackLocale`: the locale used if a translation is missing (`en-US`).
+ * - `messages`: the translation messages imported from `i18n/index.ts`.
+ * - `datetimeFormats`: the datetime formats imported from `i18n/index.ts`.
  *
  * Usage in components with Composition API:
  * ```ts
@@ -19,7 +20,8 @@ import {messages} from "@/locales";
  */
 export const i18n = createI18n({
     legacy: false,
-    locale: 'es_ES',
-    fallbackLocale: 'en_US',
+    locale: 'es-ES',
+    fallbackLocale: 'en-US',
     messages,
+    datetimeFormats
 })
