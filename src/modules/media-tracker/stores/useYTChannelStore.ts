@@ -3,7 +3,7 @@ import type {Ref} from 'vue'
 import {ref} from 'vue'
 import {api} from '@/services/api.ts'
 import type {YTChannel} from '@media-tracker/models'
-import type {GetAllParams} from '@/types'
+import type {ApiResponse, GetAllParams} from '@/types'
 import {mediaTrackerEndpoints} from '@media-tracker/constants'
 
 /**
@@ -60,65 +60,102 @@ export const useYTChannelStore = defineStore('channel', () => {
     const error: Ref<string | null> = ref(null)
 
     /** Fetch all channels */
-    async function getAll(params?: GetAllParams): Promise<void> {
+    async function getAll(params?: GetAllParams): Promise<ApiResponse<YTChannel[]>> {
         loading.value = true
         error.value = null
 
         try {
-            const response = await api.get<YTChannel[]>(mediaTrackerEndpoints.v1.youTube.channels, {params})
+            const response = await api.get<YTChannel[]>(
+                mediaTrackerEndpoints.v1.youTube.channels,
+                { params }
+            )
             channels.value = response.data
+            return { data: response.data, status: response.status }
         } catch (err: any) {
             error.value = err.message || 'Failed to fetch channels'
+            return { data: [], status: err.response?.status ?? null }
         } finally {
             loading.value = false
         }
     }
 
     /** Fetch a channel by ID */
-    async function getById(id: string): Promise<YTChannel | null> {
+    async function getById(id: string): Promise<ApiResponse<YTChannel>> {
         try {
-            const response = await api.get<YTChannel>(`${mediaTrackerEndpoints.v1.youTube.channels}/${id}`)
-            return response.data
+            const response = await api.get<YTChannel>(
+                `${mediaTrackerEndpoints.v1.youTube.channels}${id}`
+            )
+            return { data: response.data, status: response.status }
         } catch (err: any) {
             error.value = err.message || 'Failed to fetch channel'
-            return null
+            return { data: null, status: err.response?.status ?? null }
         }
     }
 
     /** Create a new channel */
-    async function create(channel: Partial<YTChannel>): Promise<YTChannel | null> {
+    async function create(channel: Partial<YTChannel>): Promise<ApiResponse<YTChannel>> {
         try {
-            const response = await api.post<YTChannel>(mediaTrackerEndpoints.v1.youTube.channels, channel)
+            const response = await api.post<YTChannel>(
+                mediaTrackerEndpoints.v1.youTube.channels,
+                channel
+            )
             channels.value.push(response.data)
-            return response.data
+            return {
+                data: response.data,
+                status: response.status
+            }
         } catch (err: any) {
             error.value = err.message || 'Failed to create channel'
-            return null
+            return {
+                data: null,
+                status: err.response?.status ?? null
+            }
         }
     }
 
     /** Update a channel */
-    async function update(id: string, payload: Partial<YTChannel>): Promise<YTChannel | null> {
+    async function update(id: string, payload: Partial<YTChannel>): Promise<ApiResponse<YTChannel>> {
         try {
-            const response = await api.put<YTChannel>(`${mediaTrackerEndpoints.v1.youTube.channels}/${id}`, payload)
+            const response = await api.put<YTChannel>(
+                `${mediaTrackerEndpoints.v1.youTube.channels}${id}`,
+                payload
+            )
+
             const index: number = channels.value.findIndex(c => c.id === id)
             if (index !== -1) channels.value[index] = response.data
-            return response.data
+
+            return {
+                data: response.data,
+                status: response.status
+            }
         } catch (err: any) {
             error.value = err.message || 'Failed to update channel'
-            return null
+            return {
+                data: null,
+                status: err.response?.status ?? null
+            }
         }
     }
 
     /** Delete a channel */
-    async function remove(id: string): Promise<boolean> {
+    async function remove(id: string): Promise<ApiResponse<null>> {
         try {
-            await api.delete(`${mediaTrackerEndpoints.v1.youTube.channels}/${id}`)
+            const response = await api.delete(
+                `${mediaTrackerEndpoints.v1.youTube.channels}${id}`
+            )
+
             channels.value = channels.value.filter(c => c.id !== id)
-            return true
+
+            return {
+                data: null,
+                status: response.status
+            }
         } catch (err: any) {
             error.value = err.message || 'Failed to delete channel'
-            return false
+            return {
+                data: null,
+                status: err.response?.status ?? null
+            }
         }
     }
 
