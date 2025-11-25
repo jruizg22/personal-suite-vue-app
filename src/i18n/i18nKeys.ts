@@ -31,6 +31,9 @@ export const commonKeys = {
     close: "common.close",
     search: "common.search",
     select: "common.select",
+    confirm: "common.confirm",
+    yes: "common.yes",
+    no: "common.no",
     sorting: {
         sortBy: "common.sorting.sort_by",
         sortAscending: "common.sorting.sort_ascending",

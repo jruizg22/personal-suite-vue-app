@@ -21,7 +21,7 @@
         },
         "delete_dialog": {
           "title": "Eliminar canal",
-          "message": "¿Seguro que deseas eliminar el canal {{channel}}?"
+          "message": "¿Seguro que deseas eliminar el canal {channel}?"
         }
       },
       "feedback": {
@@ -50,7 +50,7 @@
         },
         "delete_dialog": {
           "title": "Eliminar vídeo",
-          "message": "¿Seguro que deseas eliminar el vídeo {{video}}?"
+          "message": "¿Seguro que deseas eliminar el vídeo {video}?"
         }
       },
       "feedback": {

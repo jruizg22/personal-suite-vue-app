@@ -21,7 +21,7 @@
         },
         "delete_dialog": {
           "title": "Delete channel",
-          "message": "Are you sure you want to delete the channel {{channel}}?"
+          "message": "Are you sure you want to delete the channel {channel}?"
         }
       },
       "feedback": {
@@ -50,7 +50,7 @@
         },
         "delete_dialog": {
           "title": "Delete video",
-          "message": "Are you sure you want to delete the video {{video}}?"
+          "message": "Are you sure you want to delete the video {video}?"
         }
       },
       "feedback": {

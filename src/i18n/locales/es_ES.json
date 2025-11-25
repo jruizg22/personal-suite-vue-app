@@ -17,6 +17,9 @@
   "close": "Cerrar",
   "search": "Buscar",
   "select": "Seleccionar",
+  "confirm": "Confirmar",
+  "yes": "Sí",
+  "no": "No",
   "sorting": {
     "sort_by": "Ordenar por",
     "sort_ascending": "Orden ascendente",
